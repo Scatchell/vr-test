@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.CompareTag ("TargetZone")) {
-			Debug.Log ("collided");
 			GetComponent<Renderer>().material.color = Color.cyan;
 			score += 1;
 			setScoreText ();

@@ -12,9 +12,13 @@ public class MovementScript : MonoBehaviour {
 
 	private float sensitivityX = 1.5F;
 	private Vector3 playerPos;
+	public bool shouldMove;
+	public static MovementScript instance;
 
 	void Start()
 	{
+		instance = this;
+		shouldMove = true;
 		controller = gameObject.GetComponent<SteamVR_TrackedObject>();
 	}
 
@@ -23,7 +27,7 @@ public class MovementScript : MonoBehaviour {
 	{
 		device = SteamVR_Controller.Input((int)controller.index);
 		//If finger is on touchpad
-		if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
+		if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad) && shouldMove)
 		{
 			//Read the touchpad values
 			touchpad = device.GetAxis(EVRButtonId.k_EButton_SteamVR_Touchpad);
@@ -35,13 +39,12 @@ public class MovementScript : MonoBehaviour {
 
 				// Adjust height to terrain height at player positin
 				playerPos = player.transform.position;
-				playerPos.y = Terrain.activeTerrain.SampleHeight (player.transform.position);
+				//playerPos.y = Terrain.activeTerrain.SampleHeight (player.transform.position);
 				player.transform.position = playerPos;
 			}
 
 			// handle rotation via touchpad
 			if (touchpad.x > 0.2f || touchpad.x < -0.2f) {
-				Debug.Log ("transform: " + player.transform.right);
 				player.transform.position -= player.transform.right * Time.deltaTime * (touchpad.x * 5f);
 				//player.transform.Rotate (0, touchpad.x * sensitivityX, 0);
 			}
