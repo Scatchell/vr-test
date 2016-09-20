@@ -63,10 +63,10 @@ public class PlayerController : MonoBehaviour {
 			speed -= 1;
 		}
 
-		rb.AddForce (movement * speed);
+		//rb.AddForce (movement * speed);
 
 		Vector3 keyMovement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-		rb.AddForce (keyMovement * speed);
+		//rb.AddForce (keyMovement * speed);
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -80,7 +80,6 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject.CompareTag ("TargetZone")) {
-			Debug.Log ("collided");
 			GetComponent<Renderer>().material.color = Color.green;
 		}
 	}

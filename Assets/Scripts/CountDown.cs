@@ -7,7 +7,7 @@ public class CountDown : MonoBehaviour {
 	public Component cube;
 	public Text gameOverText;
 
-	float timer = 60;
+	private float timer = 60;
 	
 	// Update is called once per frame
 	void Update () {
