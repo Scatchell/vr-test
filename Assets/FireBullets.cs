@@ -3,10 +3,13 @@ using System.Collections;
 
 public class FireBullets : MonoBehaviour {
 	public GameObject bullet;
+	private float spawnTime = 3f;
+	private float startTime = 5f;
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("SpawnBullet", 3f, 10);
+		Invoke ("SpawnBullet", startTime);
+		InvokeRepeating ("ReduceSpawnTime", startTime, 2f);
 	}
 	
 	// Update is called once per frame
@@ -16,5 +19,12 @@ public class FireBullets : MonoBehaviour {
 
 	void SpawnBullet () {
 		Instantiate (bullet);
+		Invoke ("SpawnBullet", spawnTime);
+	}
+
+	void ReduceSpawnTime () {
+		if (spawnTime > .2f) {
+			spawnTime -= .2f;
+		}
 	}
 }

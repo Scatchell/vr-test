@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Fire : MonoBehaviour {
 	public bool fire = true;
-	private float speed = 5.0f;
+	private float speed = 7.0f;
 
 	// Use this for initialization
 	void Start () {
-	
+		int randomX = Random.Range (-8, 8);
+
+		gameObject.transform.position = new Vector3 (randomX, 1, -8);
 	}
 	
 	// Update is called once per frame
