@@ -14,7 +14,7 @@ public class MovementScript : MonoBehaviour {
 	private Vector3 playerPos;
 	public bool shouldMove;
 	public static MovementScript instance;
-	public GameObject cubeDirection;
+	public Component cameraEye;
 
 	void Start()
 	{
@@ -26,8 +26,6 @@ public class MovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		Debug.Log ("Cube Direction: " + cubeDirection.transform.forward);
-		Debug.Log ("Player direction: " + player.transform.forward);
 		device = SteamVR_Controller.Input((int)controller.index);
 		//If finger is on touchpad
 		if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad) && shouldMove)
@@ -35,24 +33,13 @@ public class MovementScript : MonoBehaviour {
 			//Read the touchpad values
 			touchpad = device.GetAxis(EVRButtonId.k_EButton_SteamVR_Touchpad);
 
-			// Handle movement via touchpad
-			if (touchpad.y > 0.2f || touchpad.y < -0.2f) {
-				// Move Forward
-				player.transform.position -= new Vector3(0,0,cubeDirection.transform.forward.z) * Time.deltaTime * (touchpad.y * 5f);
+			player.transform.position += new Vector3(cameraEye.transform.forward.x, 0, cameraEye.transform.forward.z) * Time.deltaTime * (touchpad.y * 3f); 
 
-				// Adjust height to terrain height at player positin
-				playerPos = player.transform.position;
-				playerPos.y = Terrain.activeTerrain.SampleHeight (player.transform.position);
-				player.transform.position = playerPos;
-			}
+			player.transform.position += new Vector3(cameraEye.transform.right.x, 0, cameraEye.transform.right.z) * Time.deltaTime * (touchpad.x * 3f); 
 
-			// handle rotation via touchpad
-			if (touchpad.x > 0.2f || touchpad.x < -0.2f) {
-				player.transform.position -= cubeDirection.transform.right * Time.deltaTime * (touchpad.x * 5f);
-				//player.transform.Rotate (0, touchpad.x * sensitivityX, 0);
-			}
-
-			//Debug.Log ("Touchpad X = " + touchpad.x + " : Touchpad Y = " + touchpad.y);
+			//playerPos = player.transform.position;
+			//playerPos.y = Terrain.activeTerrain.SampleHeight (player.transform.position);
+			//player.transform.position = playerPos;
 		}
 	}
 }

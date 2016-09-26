@@ -5,8 +5,7 @@ public class RotationScript : MonoBehaviour {
 
 	public Component cameraEye;
 	int throttle = 0;
-	int maxThrottle = 10;
-	public GameObject cube;
+	int maxThrottle = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -37,8 +36,6 @@ public class RotationScript : MonoBehaviour {
 
 			//gameObject.transform.rotation = cameraRotation;
 			//gameObject.transform.rotation = cameraRotation;
-
-			cube.transform.eulerAngles = new Vector3(0, cameraEye.transform.eulerAngles.y, 0);
 
 			//Quaternion rotateTowards = Quaternion.RotateTowards (gameObject.transform.rotation, cameraEye.transform.rotation, 10f);
 
