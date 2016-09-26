@@ -41,5 +41,14 @@ public class MovementScript : MonoBehaviour {
 			//playerPos.y = Terrain.activeTerrain.SampleHeight (player.transform.position);
 			//player.transform.position = playerPos;
 		}
+
+		BoxCollider boxCollider = player.GetComponent<BoxCollider>();
+
+
+		boxCollider.center = new Vector3(cameraEye.transform.localPosition.x, boxCollider.center.y, cameraEye.transform.localPosition.z);
+		Vector3 size = boxCollider.size;
+		boxCollider.size = new Vector3 (size.x, cameraEye.transform.localPosition.y, size.z);
+		Vector3 center = boxCollider.center;
+		boxCollider.center = new Vector3 (center.x, boxCollider.size.y / 2, center.z);
 	}
 }
