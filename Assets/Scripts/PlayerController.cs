@@ -47,9 +47,7 @@ public class PlayerController : MonoBehaviour {
 
 		var device = SteamVR_Controller.Input(deviceIndex);
 
-		if (deviceIndex != -1 && SteamVR_Controller.Input (deviceIndex).GetPressDown (SteamVR_Controller.ButtonMask.Trigger)) {
-			device.TriggerHapticPulse(3000);
-		}
+
 
 		Vector3 movement = new Vector3(device.transform.pos.x, 0.0f, device.transform.pos.z);
 

@@ -42,8 +42,15 @@ public class MovementScript : MonoBehaviour {
 			//player.transform.position = playerPos;
 		}
 
-		BoxCollider boxCollider = player.GetComponent<BoxCollider>();
+		if (SteamVR_Controller.Input((int)controller.index).GetPressDown (SteamVR_Controller.ButtonMask.Trigger)) {
+			device.TriggerHapticPulse(2000);
+			BoxCollider boxColliderTemp = player.GetComponent<BoxCollider>();
+			boxColliderTemp.center = new Vector3 (0, 1, 0);
+			player.transform.position = new Vector3 (0,0,0);
+			player.transform.eulerAngles = new Vector3 (0,0,0);
+		}
 
+		BoxCollider boxCollider = player.GetComponent<BoxCollider>();
 
 		boxCollider.center = new Vector3(cameraEye.transform.localPosition.x, boxCollider.center.y, cameraEye.transform.localPosition.z);
 		Vector3 size = boxCollider.size;
