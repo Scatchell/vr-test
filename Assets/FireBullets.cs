@@ -24,7 +24,7 @@ public class FireBullets : MonoBehaviour {
 
 	void ReduceSpawnTime () {
 		if (spawnTime > .2f) {
-			spawnTime -= .2f;
+			spawnTime -= 0.2f;
 		}
 	}
 }

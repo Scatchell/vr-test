@@ -15,6 +15,7 @@ public class MovementScript : MonoBehaviour {
 	public bool shouldMove;
 	public static MovementScript instance;
 	public Component cameraEye;
+	private float speed = 0.5f;
 
 	void Start()
 	{
