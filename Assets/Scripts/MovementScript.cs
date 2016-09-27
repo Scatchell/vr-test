@@ -15,7 +15,7 @@ public class MovementScript : MonoBehaviour {
 	public bool shouldMove;
 	public static MovementScript instance;
 	public Component cameraEye;
-	private float speed = 0.5f;
+	private float speed = 1.0f;
 
 	void Start()
 	{
@@ -34,9 +34,9 @@ public class MovementScript : MonoBehaviour {
 			//Read the touchpad values
 			touchpad = device.GetAxis(EVRButtonId.k_EButton_SteamVR_Touchpad);
 
-			player.transform.position += new Vector3(cameraEye.transform.forward.x, 0, cameraEye.transform.forward.z) * Time.deltaTime * (touchpad.y * 3f); 
+			player.transform.position += new Vector3(cameraEye.transform.forward.x, 0, cameraEye.transform.forward.z) * speed * Time.deltaTime * (touchpad.y * 3f); 
 
-			player.transform.position += new Vector3(cameraEye.transform.right.x, 0, cameraEye.transform.right.z) * Time.deltaTime * (touchpad.x * 3f); 
+			player.transform.position += new Vector3(cameraEye.transform.right.x, 0, cameraEye.transform.right.z) * speed * Time.deltaTime * (touchpad.x * 3f); 
 
 			//playerPos = player.transform.position;
 			//playerPos.y = Terrain.activeTerrain.SampleHeight (player.transform.position);
@@ -45,18 +45,41 @@ public class MovementScript : MonoBehaviour {
 
 		if (SteamVR_Controller.Input((int)controller.index).GetPressDown (SteamVR_Controller.ButtonMask.Trigger)) {
 			device.TriggerHapticPulse(2000);
-			BoxCollider boxColliderTemp = player.GetComponent<BoxCollider>();
-			boxColliderTemp.center = new Vector3 (0, 1, 0);
-			player.transform.position = new Vector3 (0,0,0);
-			player.transform.eulerAngles = new Vector3 (0,0,0);
+
+			ResetPlayerToStartPosition ();
 		}
 
-		BoxCollider boxCollider = player.GetComponent<BoxCollider>();
+		ResizePlayerBoxCollider ();
 
-		boxCollider.center = new Vector3(cameraEye.transform.localPosition.x, boxCollider.center.y, cameraEye.transform.localPosition.z);
+		UpdateSpeedOnKeyPress ();
+
+	}
+
+	void ResetPlayerToStartPosition ()
+	{
+		BoxCollider boxColliderTemp = player.GetComponent<BoxCollider> ();
+		boxColliderTemp.center = new Vector3 (0, 1, 0);
+		player.transform.position = new Vector3 (0, 0, 0);
+		player.transform.eulerAngles = new Vector3 (0, 0, 0);
+	}
+
+	void ResizePlayerBoxCollider ()
+	{
+		BoxCollider boxCollider = player.GetComponent<BoxCollider> ();
+		boxCollider.center = new Vector3 (cameraEye.transform.localPosition.x, boxCollider.center.y, cameraEye.transform.localPosition.z);
 		Vector3 size = boxCollider.size;
 		boxCollider.size = new Vector3 (size.x, cameraEye.transform.localPosition.y, size.z);
 		Vector3 center = boxCollider.center;
 		boxCollider.center = new Vector3 (center.x, boxCollider.size.y / 2, center.z);
+	}
+
+	void UpdateSpeedOnKeyPress() {
+		if (Input.GetKey (KeyCode.Q) && speed > 0.1f) {
+			speed -= 0.1f;
+		}
+
+		if (Input.GetKey (KeyCode.E) && speed < 10.0f) {
+			speed += 0.1f;
+		}
 	}
 }

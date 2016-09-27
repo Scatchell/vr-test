@@ -45,14 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FireBullets.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetector.cs" />
-     <Compile Include="Assets\Scripts\CountDown.cs" />
+     <Compile Include="Assets\Scripts\CountUp.cs" />
      <Compile Include="Assets\Scripts\Fire.cs" />
+     <Compile Include="Assets\Scripts\FireBullets.cs" />
      <Compile Include="Assets\Scripts\MovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\RotationScript.cs" />
+     <Compile Include="Assets\Scripts\PositionRecovery.cs" />
+     <Compile Include="Assets\Scripts\ScoringScript.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />

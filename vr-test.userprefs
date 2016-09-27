@@ -1,32 +1,14 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RotationScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\FireBullets.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="50" Column="3" />
-      <File FileName="Assets\Scripts\MovementScript.cs" Line="29" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="31" Column="39" />
+      <File FileName="Assets\Scripts\MovementScript.cs" Line="5" Column="28" />
       <File FileName="Assets\FireBullets.cs" Line="27" Column="20" />
-      <File FileName="Assets\Scripts\Fire.cs" Line="10" Column="35" />
+      <File FileName="Assets\Scripts\Fire.cs" Line="10" Column="36" />
       <File FileName="Assets\Scripts\CollisionDetector.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RotationScript.cs" Line="28" Column="4" />
+      <File FileName="Assets\Scripts\RotationScript.cs" Line="37" Column="46" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="vr-test" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="RotationScript.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node name="vr-test" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

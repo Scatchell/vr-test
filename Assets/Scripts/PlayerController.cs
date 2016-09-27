@@ -6,19 +6,11 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody rb;
 
 	public float speed = 15;
-	public Text scoreText;
-
-	private int score = 0;
 
 	void Start() {
-		setScoreText ();
 		rb = GetComponent<Rigidbody> ();
 	}
-
-	void setScoreText() {
-		scoreText.text = "Score: " + score.ToString ();
-	}
-
+		
 	void PrintControllerStatus(int index)
 	{
 		var device = SteamVR_Controller.Input(index);
@@ -47,19 +39,9 @@ public class PlayerController : MonoBehaviour {
 
 		var device = SteamVR_Controller.Input(deviceIndex);
 
-
-
 		Vector3 movement = new Vector3(device.transform.pos.x, 0.0f, device.transform.pos.z);
 
 		//Debug.Log (device.transform.pos);
-
-		if (Input.GetKey (KeyCode.Q) && speed < 100) {
-			speed += 1;
-		}
-
-		if (Input.GetKey (KeyCode.E) && speed > 0) {
-			speed -= 1;
-		}
 
 		//rb.AddForce (movement * speed);
 
@@ -70,8 +52,6 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.CompareTag ("TargetZone")) {
 			GetComponent<Renderer>().material.color = Color.cyan;
-			score += 1;
-			setScoreText ();
 		}
 	}
 

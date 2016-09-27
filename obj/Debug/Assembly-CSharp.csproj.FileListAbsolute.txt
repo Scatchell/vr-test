@@ -1,0 +1,2 @@
+C:\Users\innovation\vr\vr-test\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\innovation\vr\vr-test\obj\Debug\Assembly-CSharp.dll

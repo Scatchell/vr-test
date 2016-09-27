@@ -7,20 +7,18 @@ public class Fire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int randomX = Random.Range (-8, 8);
-
-		gameObject.transform.position = new Vector3 (randomX, 1, -8);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (fire) {
-			gameObject.transform.position += new Vector3 (0, 0, 1) * Time.deltaTime * speed;
+			gameObject.transform.position += gameObject.transform.up * Time.deltaTime * speed;
 		}
 	}
 
 	void OnCollisionEnter(Collision otherObj) {
-		if (otherObj.gameObject.tag == "Wall") {
+		if (otherObj.gameObject.tag == "Wall" || otherObj.gameObject.tag == "Bullet") {
 			Destroy(gameObject);
 		}
 	}
