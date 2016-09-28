@@ -7,8 +7,11 @@ public class FireBullets : MonoBehaviour {
 	private float spawnTime;
 	private float startTime = 1f;
 	private int level = 1;
+
 	private const int MAX_LEVELS = 4;
 	private const int DISABLED = 100;
+	private const int MIN_RANGE = -4;
+	private const int MAX_RANGE = 4;
 
 	// Use this for initialization
 	void Start () {
@@ -24,33 +27,33 @@ public class FireBullets : MonoBehaviour {
 
 	void SpawnBullet () {
 		if (level >= 1) {
-			int randomX = Random.Range (-8, 8);
+			int randomX = Random.Range (MIN_RANGE, MAX_RANGE);
 
-			Vector3 randomPosition = new Vector3 (randomX, 1, -9);
+			Vector3 randomPosition = new Vector3 (randomX, 1, -4);
 
 			Instantiate (bullet, randomPosition, Quaternion.Euler (new Vector3 (90, 0, 0)));
 		}
 
 		if (level >= 2) {
-			int randomZ = Random.Range (-8, 8);
+			int randomZ = Random.Range (MIN_RANGE, MAX_RANGE);
 
-			Vector3 randomPosition = new Vector3 (-9, 1, randomZ);
+			Vector3 randomPosition = new Vector3 (-4, 1, randomZ);
 
 			Instantiate (bullet, randomPosition, Quaternion.Euler (new Vector3 (90, 90, 0)));
 		}
 
 		if (level >= DISABLED) {
-			int randomX = Random.Range (-8, 8);
+			int randomX = Random.Range (MIN_RANGE, MAX_RANGE);
 
-			Vector3 randomPosition = new Vector3 (randomX, 1, 9);
+			Vector3 randomPosition = new Vector3 (randomX, 1, 4);
 
 			Instantiate (bullet, randomPosition, Quaternion.Euler (new Vector3 (90, 180, 0)));
 		}
 
 		if (level >= DISABLED) {
-			int randomZ = Random.Range (-8, 8);
+			int randomZ = Random.Range (MIN_RANGE, MAX_RANGE);
 
-			Vector3 randomPosition = new Vector3 (8, 1, randomZ);
+			Vector3 randomPosition = new Vector3 (4, 1, randomZ);
 
 			Instantiate (bullet, randomPosition, Quaternion.Euler (new Vector3 (90, 270, 0)));
 		}
@@ -60,7 +63,7 @@ public class FireBullets : MonoBehaviour {
 
 	void ReduceSpawnTime () {
 		if (spawnTime > 1.0f) {
-			spawnTime -= 1.2f;
+			spawnTime -= 0.2f;
 		} else if (level < MAX_LEVELS){
 			level += 1;
 			spawnTime = INITIAL_SPAWN_TIME;
