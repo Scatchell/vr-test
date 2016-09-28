@@ -35,7 +35,8 @@ public class PositionRecovery : MonoBehaviour {
 				rotateBack = false;
 				MovementScript.instance.shouldMove = true;
 				GetComponent<Rigidbody> ().velocity = Vector3.zero;
-				GetComponent<Rigidbody> ().isKinematic = false;
+				GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
+				//GetComponent<Rigidbody> ().isKinematic = false;
 			}
 		}
 	}
@@ -46,12 +47,12 @@ public class PositionRecovery : MonoBehaviour {
 			originalPosition = gameObject.transform.position;
 			originalRotation = gameObject.transform.rotation;
 
-			Invoke ("SetRotateBackFlag", 2f);
+			Invoke ("SetRotateBackFlag", 1f);
 		}
 	}
 
 	void SetRotateBackFlag() {
 		rotateBack = true;
-		GetComponent<Rigidbody> ().isKinematic = true;
+		//GetComponent<Rigidbody> ().isKinematic = true;
 	}
 }
